@@ -1,6 +1,7 @@
 package com.devesuperior.dslist.dto;
 
 import com.devesuperior.dslist.entities.Game;
+import com.devesuperior.projections.GameMinProjection;
 
 public class GameMinDTO {
     private Long id;
@@ -11,10 +12,6 @@ public class GameMinDTO {
     private String longDescription;
 
     
-    public GameMinDTO(){
-
-    }
-
     //Método construtor
     public GameMinDTO(Game entity) {
         id = entity.getId();
@@ -24,6 +21,14 @@ public class GameMinDTO {
         shortDescription = entity.getShortDescription();
         longDescription = entity.getLongDescription();
     }
+
+    public GameMinDTO(GameMinProjection projection) {
+		id = projection.getId();
+		title = projection.getTitle();
+		year = projection.getGameYear();
+		imgUrl = projection.getImgUrl();
+		shortDescription = projection.getShortDescription();
+	}
 
     //No DTO só é necessário o método Getter. Não se faz necessário escrever o setter. 
     
